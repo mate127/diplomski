@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { yArray } from '../config/yjs-setup'
 import * as Y from 'yjs'
+import { getFullState } from '../sync/stateSync'
 
 export const TodoList = () => {
   const [todos, setTodos] = useState<string[]>([])
@@ -51,6 +52,12 @@ export const TodoList = () => {
           </li>
         ))}
       </ul>
+      <button onClick={() => {
+        const state = getFullState()
+        console.log('STATE SIZE:', state.length)
+      }}>
+        Test State Sync
+      </button>
     </div>
   )
 }
